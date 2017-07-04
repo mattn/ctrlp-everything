@@ -9,7 +9,7 @@ function s:match(item)
     throw "too short"
   endif
   
-  return split(system(printf('es -a-d %s', shellescape(str))), "\n")
+  return split(system(printf('es %s', shellescape(str))), "\n")
 endfunction
 
 let s:everything_var = {
@@ -36,6 +36,7 @@ endfunc
 function! ctrlp#everything#accept(mode, str)
   call ctrlp#exit()
   call ctrlp#acceptfile(a:mode, a:str)
+  silent! doau BufEnter
 endfunction
 
 let s:id = g:ctrlp_builtins + len(g:ctrlp_ext_vars)
