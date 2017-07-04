@@ -9,7 +9,7 @@ function s:match(item)
     throw "too short"
   endif
   
-  return split(system(printf('es %s', shellescape(str))), "\n")
+  return split(system(printf('es -a-d %s', shellescape(str))), "\n")
 endfunction
 
 let s:everything_var = {
